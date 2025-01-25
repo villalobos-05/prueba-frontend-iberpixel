@@ -16,14 +16,10 @@ function App() {
     )
   }
 
-  return (
-    <main>
-      {loading ? (
-        <h2 className='text-center text-3xl font-semibold'>Cargando...</h2>
-      ) : (
-        <ProductsGrid products={products} />
-      )}
-    </main>
+  return loading ? (
+    <h2 className='text-center text-3xl font-semibold'>Cargando...</h2>
+  ) : (
+    <ProductsGrid products={products} />
   )
 }
 

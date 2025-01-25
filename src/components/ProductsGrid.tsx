@@ -23,17 +23,17 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
   }
 
   return (
-    <>
+    <div className='flex flex-col gap-10'>
       <ProductsHeader
         onTextInputChange={(event) => setProductName(event.target.value)}
         onCheckboxInputChange={handleCheckbox}
       />
 
-      <div className='grid grid-cols-1 gap-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+      <main className='grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
         {filteredProducts.map((product) => (
           <ProductCard product={product} />
         ))}
-      </div>
-    </>
+      </main>
+    </div>
   )
 }
