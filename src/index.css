@@ -12,10 +12,20 @@ body {
   color: var(--color-counter-bg);
 }
 
+/* light theme (default) */
 @theme {
   --color-background: #eeeeee;
   --color-counter-bg: #222831;
   --color-primary: #e3342f;
   --color-secondary: #f8fafc;
+  --color-accent: #00adb5;
+}
+
+/* dark theme */
+.dark {
+  --color-background: #121212;
+  --color-counter-bg: #e4e2ea;
+  --color-primary: #3272bf;
+  --color-secondary: #282828;
   --color-accent: #00adb5;
 }
