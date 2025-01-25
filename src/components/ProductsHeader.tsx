@@ -12,23 +12,28 @@ export default function ProductsHeader({
   onCheckboxInputChange,
 }: Props) {
   return (
-    <div className='flex items-center justify-between gap-6'>
-      <TextInput placeholder='Buscar producto' onChange={onTextInputChange} />
+    <header className='flex items-center justify-between gap-6 max-md:flex-col'>
+      <div className='flex gap-6 max-md:flex-col'>
+        <TextInput placeholder='Buscar producto' onChange={onTextInputChange} />
 
-      <div className='flex gap-6'>
-        {productCategories.map((category) => (
-          <label key={category}>
-            <input
-              type='checkbox'
-              value={category}
-              onChange={onCheckboxInputChange}
-            />
-            {category}
-          </label>
-        ))}
+        <div className='bg-secondary flex gap-6 rounded-lg p-2'>
+          {productCategories.map((category) => (
+            <label
+              key={category}
+              className='flex cursor-pointer items-center gap-1 hover:opacity-75'
+            >
+              <input
+                type='checkbox'
+                value={category}
+                onChange={onCheckboxInputChange}
+              />
+              <span className='first-letter:uppercase'>{category}</span>
+            </label>
+          ))}
+        </div>
       </div>
 
       <ThemeSwitch />
-    </div>
+    </header>
   )
 }
