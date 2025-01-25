@@ -10,6 +10,7 @@
 body {
   background: var(--color-background);
   color: var(--color-counter-bg);
+  transition: background 200ms;
 }
 
 /* light theme (default) */

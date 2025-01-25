@@ -5,7 +5,7 @@ const TextInput = ({ className, ...props }: Props) => {
     <input
       {...props}
       type='text'
-      className={`bg-secondary focus:bg-secondary/50 rounded-lg px-2 py-1 text-lg outline-0 ${className}`}
+      className={`bg-secondary focus:bg-secondary/50 rounded-lg px-2 py-1 text-lg outline-0 duration-200 ${className}`}
     />
   )
 }
