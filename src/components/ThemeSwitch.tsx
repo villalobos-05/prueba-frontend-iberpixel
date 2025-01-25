@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Button from './ui/Button'
+import { IoMoon, IoSunny } from 'react-icons/io5'
 
 type ThemeTypes = 'light' | 'dark'
 
@@ -17,9 +18,13 @@ export default function ThemeSwitch() {
   return (
     <Button
       onClick={toggleTheme}
-      className='border-text bg-transparent duration-200 hover:opacity-75'
+      className='bg-transparent duration-200 hover:opacity-75'
     >
-      {theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
+      {theme === 'light' ? (
+        <IoSunny size={26} className='hover:animate-spin' />
+      ) : (
+        <IoMoon size={26} />
+      )}
     </Button>
   )
 }
