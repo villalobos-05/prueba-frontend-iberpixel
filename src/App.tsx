@@ -1,4 +1,5 @@
 import ProductsGrid from './components/ProductsGrid'
+import Button from './components/ui/Button'
 import { useProducts } from './hooks/useProducts'
 
 function App() {
@@ -8,9 +9,9 @@ function App() {
     return (
       <main className='text-3xl'>
         <p>¡Error al buscar los productos! Por favor, inténtelo de nuevo.</p>
-        <button onClick={() => window.location.reload()}>
+        <Button onClick={() => window.location.reload()}>
           Prueba otra vez
-        </button>
+        </Button>
       </main>
     )
   }
