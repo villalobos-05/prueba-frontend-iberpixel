@@ -1,24 +1,13 @@
-import { useEffect, useState } from 'react'
 import Cart from './Cart'
 import ThemeSwitch from './ThemeSwitch'
 import TextInput from './ui/TextInput'
-import { getProductCategories } from '../services/products'
-import { productCategories } from '../types/product.d'
 import Button from './ui/Button'
 import { sortValues } from '../types/productFilters.d'
 import { useProductFilters } from '../hooks/useProductFilters'
+import { useProductCategories } from '../hooks/useProductCategories'
 
 export default function ProductsHeader() {
-  const [categories, setCategories] = useState<string[]>([...productCategories]) // Default categories if problem fetching
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const categoriesFetched = await getProductCategories()
-      setCategories(categoriesFetched)
-    }
-
-    fetchCategories()
-  }, [])
+  const { categories } = useProductCategories()
 
   const {
     filterProductName,
