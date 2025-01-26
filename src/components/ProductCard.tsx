@@ -1,7 +1,11 @@
+import { useCart } from '../hooks/useCart'
 import { Product } from '../types/product.d'
 import { currencyFormatter } from '../utils/currencyFormatter'
+import Button from './ui/Button'
 
 export default function ProductCard({ product }: { product: Product }) {
+  const { cart, addToCart, removeFromCart } = useCart()
+
   return (
     <div
       key={product.id}
@@ -23,6 +27,12 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className='text-counter-bg/45'>{product.category}</span>
         </div>
       </div>
+
+      {cart.some((cartProduct) => cartProduct.id === product.id) ? (
+        <Button onClick={() => removeFromCart(product.id)}>-</Button>
+      ) : (
+        <Button onClick={() => addToCart(product)}>+</Button>
+      )}
     </div>
   )
 }
