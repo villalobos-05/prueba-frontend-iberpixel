@@ -42,6 +42,7 @@ export default function ProductsFilters() {
       <div className='bg-secondary flex gap-2 rounded-lg'>
         {sortValues.map((sortingValue) => (
           <Button
+            key={sortingValue}
             value={sortingValue}
             onClick={() => sortProductsByPrice(sortingValue)}
             className={
