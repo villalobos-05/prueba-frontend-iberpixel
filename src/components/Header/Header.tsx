@@ -3,7 +3,7 @@ import ThemeSwitch from './ThemeSwitch'
 
 export default function Header() {
   return (
-    <header className='mb-8 flex justify-around'>
+    <header className='mb-8 flex justify-around gap-10'>
       <h1 className='bg-secondary/90 rounded-lg p-4 text-3xl font-bold'>
         Productos <span className='text-accent'>Iberpixel</span>
       </h1>
