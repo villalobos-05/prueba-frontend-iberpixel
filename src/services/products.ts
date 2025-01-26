@@ -1,8 +1,10 @@
 import { Product } from '../types/product'
 import { mapProduct } from '../utils/mapProduct'
 
+const FAKESTORE_API_URL = 'https://fakestoreapi.com'
+
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch(`https://fakestoreapi.com/products`)
+  const response = await fetch(`${FAKESTORE_API_URL}/products`)
 
   if (!response.ok) {
     throw new Error(`Could not fetch products! Status: ${response.status}`)
@@ -16,7 +18,7 @@ export const getProducts = async (): Promise<Product[]> => {
 }
 
 export const getProductCategories = async (): Promise<string[]> => {
-  const response = await fetch(`https://fakestoreapi.com/products/categories`)
+  const response = await fetch(`${FAKESTORE_API_URL}/products/categories`)
 
   if (!response.ok) {
     throw new Error(`Could not fetch categories! Status: ${response.status}`)
