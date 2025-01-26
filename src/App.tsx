@@ -1,5 +1,6 @@
 import ProductsGrid from './components/ProductsGrid'
 import Button from './components/ui/Button'
+import { ProductFiltersProvider } from './contexts/productFitlers'
 import { useProducts } from './hooks/useProducts'
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
   return loading ? (
     <h2 className='text-center text-3xl font-semibold'>Cargando...</h2>
   ) : (
-    <ProductsGrid products={products} />
+    <ProductFiltersProvider products={products}>
+      <ProductsGrid />
+    </ProductFiltersProvider>
   )
 }
 

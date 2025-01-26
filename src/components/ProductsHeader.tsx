@@ -4,16 +4,11 @@ import ThemeSwitch from './ThemeSwitch'
 import TextInput from './ui/TextInput'
 import { getProductCategories } from '../services/products'
 import { productCategories } from '../types/product.d'
+import Button from './ui/Button'
+import { sortValues } from '../types/productFilters.d'
+import { useProductFilters } from '../hooks/useProductFilters'
 
-type Props = {
-  onTextInputChange: React.ChangeEventHandler<HTMLInputElement>
-  onCheckboxInputChange: React.ChangeEventHandler<HTMLInputElement>
-}
-
-export default function ProductsHeader({
-  onTextInputChange,
-  onCheckboxInputChange,
-}: Props) {
+export default function ProductsHeader() {
   const [categories, setCategories] = useState<string[]>([...productCategories]) // Default categories if problem fetching
 
   useEffect(() => {
@@ -25,10 +20,20 @@ export default function ProductsHeader({
     fetchCategories()
   }, [])
 
+  const {
+    filterProductName,
+    filterProductCategory,
+    sortProductsByPrice,
+    sortByPrice,
+  } = useProductFilters()
+
   return (
     <header className='flex items-center justify-between gap-6 max-md:flex-col'>
       <div className='flex gap-6 max-md:flex-col'>
-        <TextInput placeholder='Buscar producto' onChange={onTextInputChange} />
+        <TextInput
+          placeholder='Buscar producto'
+          onChange={(event) => filterProductName(event.target.value)}
+        />
 
         <div className='bg-secondary flex gap-6 rounded-lg p-2'>
           {categories.sort().map((category) => (
@@ -39,10 +44,29 @@ export default function ProductsHeader({
               <input
                 type='checkbox'
                 value={category}
-                onChange={onCheckboxInputChange}
+                onChange={(event) => {
+                  filterProductCategory(
+                    event.target.value,
+                    event.target.checked
+                  )
+                }}
               />
               <span className='first-letter:uppercase'>{category}</span>
             </label>
+          ))}
+        </div>
+
+        <div className='bg-secondary flex gap-2 rounded-lg'>
+          {sortValues.map((sortingValue) => (
+            <Button
+              value={sortingValue}
+              onClick={() => sortProductsByPrice(sortingValue)}
+              className={
+                sortByPrice === sortingValue ? 'text-accent' : 'text-counter-bg'
+              }
+            >
+              {sortingValue}
+            </Button>
           ))}
         </div>
       </div>

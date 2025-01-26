@@ -1,41 +1,12 @@
-import { useEffect, useState } from 'react'
-import { Product } from '../types/product'
-import { filterProducts } from '../utils/filterProducts'
+import { useContext } from 'react'
+import { ProductFiltersContext } from '../contexts/productFitlers'
 
-export const sortValues = ['none', 'asc', 'desc'] as const
-
-export const useProductFilters = (products: Product[]) => {
-  const [filteredProducts, setFilteredProducts] = useState([...products])
-
-  const [productName, setProductName] = useState('')
-  const [productCategories, setProductCategories] = useState<string[]>([])
-
-  const [sortByPrice, setSortByPrice] =
-    useState<(typeof sortValues)[number]>('none')
-
-  useEffect(() => {
-    // Filters
-    const newFilteredProducts = filterProducts({
-      products,
-      name: productName,
-      categories: productCategories,
-    })
-
-    // Sorting
-    if (sortByPrice !== 'none') {
-      newFilteredProducts.sort((a, b) => {
-        return sortByPrice === 'asc' ? a.price - b.price : b.price - a.price
-      })
-    }
-
-    setFilteredProducts(newFilteredProducts)
-  }, [productName, productCategories, products, sortByPrice])
-
-  return {
-    setProductName,
-    setProductCategories,
-    setSortByPrice,
-    sortByPrice,
-    filteredProducts,
+export const useProductFilters = () => {
+  const productFiltersContext = useContext(ProductFiltersContext)
+  if (productFiltersContext === undefined) {
+    throw new Error(
+      'Products filters context is undefined. Not using useProductFilters within a CartProvider.'
+    )
   }
+  return productFiltersContext
 }
