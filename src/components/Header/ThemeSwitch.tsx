@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Button from './ui/Button'
+import Button from '../ui/Button'
 import { IoMoon, IoSunny } from 'react-icons/io5'
 
 type ThemeTypes = 'light' | 'dark'

@@ -1,4 +1,4 @@
-import ProductsGrid from './components/ProductsGrid'
+import Products from './components/Products/Products'
 import Button from './components/ui/Button'
 import { ProductFiltersProvider } from './contexts/productFitlers'
 import { useProducts } from './hooks/useProducts'
@@ -21,7 +21,7 @@ function App() {
     <h2 className='text-center text-3xl font-semibold'>Cargando...</h2>
   ) : (
     <ProductFiltersProvider products={products}>
-      <ProductsGrid />
+      <Products />
     </ProductFiltersProvider>
   )
 }

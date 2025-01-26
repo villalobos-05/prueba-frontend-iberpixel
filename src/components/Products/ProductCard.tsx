@@ -1,7 +1,7 @@
-import { useCart } from '../hooks/useCart'
-import { Product } from '../types/product.d'
-import { currencyFormatter } from '../utils/currencyFormatter'
-import Button from './ui/Button'
+import { useCart } from '../../hooks/useCart'
+import { Product } from '../../types/product.d'
+import { currencyFormatter } from '../../utils/currencyFormatter'
+import Button from '../ui/Button'
 import { BsCartPlus, BsCartX } from 'react-icons/bs'
 
 export default function ProductCard({ product }: { product: Product }) {

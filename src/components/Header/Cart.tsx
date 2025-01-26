@@ -1,8 +1,8 @@
 import { IoCartOutline } from 'react-icons/io5'
-import { useCart } from '../hooks/useCart'
-import ProductCard from './ProductCard'
-import { currencyFormatter } from '../utils/currencyFormatter'
-import Button from './ui/Button'
+import { useCart } from '../../hooks/useCart'
+import ProductCard from '../Products/ProductCard'
+import { currencyFormatter } from '../../utils/currencyFormatter'
+import Button from '../ui/Button'
 
 export default function Cart() {
   const { cart, clearCart, substractFromCart, addToCart } = useCart()

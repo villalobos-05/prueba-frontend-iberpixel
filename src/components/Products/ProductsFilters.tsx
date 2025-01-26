@@ -1,10 +1,10 @@
-import TextInput from './ui/TextInput'
-import Button from './ui/Button'
-import { SortEnum, sortValues } from '../types/productFilters.d'
-import { useProductFilters } from '../hooks/useProductFilters'
-import { useProductCategories } from '../hooks/useProductCategories'
+import TextInput from '../ui/TextInput'
+import Button from '../ui/Button'
+import { SortEnum, sortValues } from '../../types/productFilters.d'
+import { useProductFilters } from '../../hooks/useProductFilters'
+import { useProductCategories } from '../../hooks/useProductCategories'
 
-export default function ProductsHeader() {
+export default function ProductsFilters() {
   const { categories } = useProductCategories()
 
   const {

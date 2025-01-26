@@ -1,5 +1,5 @@
-import Cart from '../Cart'
-import ThemeSwitch from '../ThemeSwitch'
+import Cart from './Cart'
+import ThemeSwitch from './ThemeSwitch'
 
 export default function Header() {
   return (
