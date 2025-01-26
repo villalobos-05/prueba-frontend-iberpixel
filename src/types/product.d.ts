@@ -1,3 +1,7 @@
+export interface CartProduct extends Product {
+  quantity: number
+}
+
 export interface Product {
   id: number
   title: string
