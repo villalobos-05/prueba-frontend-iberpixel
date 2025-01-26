@@ -2,7 +2,7 @@ import Cart from './Cart'
 import ThemeSwitch from './ThemeSwitch'
 import TextInput from './ui/TextInput'
 import Button from './ui/Button'
-import { sortValues } from '../types/productFilters.d'
+import { SortEnum, sortValues } from '../types/productFilters.d'
 import { useProductFilters } from '../hooks/useProductFilters'
 import { useProductCategories } from '../hooks/useProductCategories'
 
@@ -54,7 +54,7 @@ export default function ProductsHeader() {
                 sortByPrice === sortingValue ? 'text-accent' : 'text-counter-bg'
               }
             >
-              {sortingValue}
+              {SortEnum[sortingValue]}
             </Button>
           ))}
         </div>
