@@ -1,5 +1,3 @@
-import Cart from './Cart'
-import ThemeSwitch from './ThemeSwitch'
 import TextInput from './ui/TextInput'
 import Button from './ui/Button'
 import { SortEnum, sortValues } from '../types/productFilters.d'
@@ -58,12 +56,6 @@ export default function ProductsHeader() {
             </Button>
           ))}
         </div>
-      </div>
-
-      <div className='flex items-center gap-1.5'>
-        <Cart />
-
-        <ThemeSwitch />
       </div>
     </header>
   )
