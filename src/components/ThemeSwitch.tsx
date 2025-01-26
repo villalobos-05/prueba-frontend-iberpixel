@@ -27,9 +27,9 @@ export default function ThemeSwitch() {
       className='bg-transparent duration-200 hover:opacity-75'
     >
       {theme === 'light' ? (
-        <IoSunny size={26} className='hover:animate-spin' />
+        <IoSunny size={28} className='hover:animate-spin' />
       ) : (
-        <IoMoon size={26} />
+        <IoMoon size={28} />
       )}
     </Button>
   )
