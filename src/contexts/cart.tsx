@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react'
-import { CartProduct, cartReducer } from '../reducers/cartReducer'
-import { Product } from '../types/product'
+import { cartReducer, STORAGE_CART } from '../reducers/cartReducer'
+import { CartProduct, Product } from '../types/product'
 
 type CartContextType = {
   cart: CartProduct[]
@@ -13,7 +13,10 @@ type CartContextType = {
 export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [state, dispatch] = useReducer(cartReducer, [])
+  const [state, dispatch] = useReducer(
+    cartReducer,
+    JSON.parse(localStorage.getItem(STORAGE_CART) || '[]')
+  )
 
   const addToCart = (product: Product) => {
     dispatch({ type: 'ADD_PRODUCT', payload: product })
