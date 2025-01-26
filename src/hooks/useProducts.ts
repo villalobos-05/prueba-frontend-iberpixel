@@ -7,24 +7,24 @@ export const useProducts = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  useEffect(() => {
+  const fetchProducts = async () => {
     setLoading(true)
     setError(false)
 
-    const fetchProducts = async () => {
-      try {
-        const productsFetched = await getProducts()
-        setProducts(productsFetched)
-      } catch (e) {
-        console.error(e)
-        setError(true)
-      } finally {
-        setLoading(false)
-      }
+    try {
+      const productsFetched = await getProducts()
+      setProducts(productsFetched)
+    } catch (e) {
+      console.error(e)
+      setError(true)
+    } finally {
+      setLoading(false)
     }
+  }
 
+  useEffect(() => {
     fetchProducts()
   }, [])
 
-  return { products, loading, error }
+  return { products, loading, error, fetchProducts }
 }
