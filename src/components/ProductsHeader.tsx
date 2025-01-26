@@ -1,4 +1,5 @@
 import { productCategories } from '../types/product.d'
+import Cart from './Cart'
 import ThemeSwitch from './ThemeSwitch'
 import TextInput from './ui/TextInput'
 
@@ -33,7 +34,11 @@ export default function ProductsHeader({
         </div>
       </div>
 
-      <ThemeSwitch />
+      <div className='flex items-center gap-1.5'>
+        <Cart />
+
+        <ThemeSwitch />
+      </div>
     </header>
   )
 }
