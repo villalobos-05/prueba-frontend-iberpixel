@@ -158,3 +158,33 @@ Otros archivos de configuración del proyecto, como tsconfig.json, o vite.config
 Vite es una herramienta para crear y gestionar proyectos con React u otros frameworks, en desarrollo monta un servidor local y se puede configurar el puerto del servidor en el su archivo de configuración.
 
 Por defecto solo se puede acceder desde la propia máquina (localhost), pero se puede configurar para que otras máquinas en local puedan acceder (con la configuración actual).
+
+## Decisiones Técnicas
+
+1. Mappear la respuesta de la API de fakestoreapi, porque es una API de terceros y no tengo control sobre ella, por lo que pueden modificar el objeto o la respuesta que devuelve, haciendo romper toda mi aplicación. Mappeando la respuesta, me aseguro de que si cambian algo, solo he de actualizar el map (si no hubiera mappeo, tendría que cambiar todas las veces que uso un objeto tipo Product en toda la aplicación)
+
+2. Cambiar la lógica de los filtros a un estado global. Ya que, cuando no lo era, tenía que pasar los filtros de componentes padres a hijos, habiendo el problema de 'prop drilling'. Al pasar los filtros a un estado global, ya no tengo que pasar estos como props, quedando el código mucho más limpio y ordenado. (Igual con el carrito, aunque en este ya aprendí de mi error anterior y lo definí directamente como un estado global)
+
+3. Hacer la lógica del estado del carrito (cart) en un reducer, ya que el carrito puede variar de muchas maneras (añadir producto a carrito, eliminar producto, sumar una unidad, etc.). AL usar un reducer puedo manejar todas estas acciones de manera más clara y mantenible, ya que cada acción está definida explícitamente y el estado se actualiza de forma predecible. (Nota: no he hecho lo mismo con el estado de los filtros, ya que no es tan complejo (de momento), pero debería haber usado también un reducer, ya que, al ser filtros, estos pueden escalar mucho, haciendo el estado de estos más tedioso)
+
+4. Utilizar TypeScript para asegurar la tipificación en todo el proyecto. Esto no solo mejora la experiencia de desarrollo al tener autocompletado, sino que también mejora la calidad del código, al evitar errores de tipo.
+
+5. Implementar Tailwind CSS para el diseño de la interfaz de usuario. Tailwind permite escribir estilos de manera rápida y eficiente utilizando clases utilitarias, lo que facilita la creación de una interfaz consistente y responsiva sin necesidad de escribir CSS personalizado desde cero.
+
+6. Crear componentes de UI reutilizables, como Button.tsx (un botón). Podría haber usado una librería de componentes, como Chakra, o Material UI, pero no consideré el proyecto lo suficientemente grande como para tener que usar estas (solo hago uso de un botón, un input de texto, y un mensaje de error reutilizable)
+
+7. Crear una carpeta de utils donde se guardan funciones con lógica o constantes reutilizables en toda la aplicación. Esto ayuda a separar lógica genérica no tan importante (como comparar dos textos) fuera de la lógica principal, al igual que poder reutilizarla cada vez que se quiera usar. Por ejemplo, la constante currencyFormatter, que la reutilizo, tanto en el componente ProductCard, como en Cart, (esta en especial, al ser un objeto constante, me ahorro tener que crear el mismo objeto cada vez que se renderice un componente ProductCart, ahorrando espacio en memoria, aunque sea ínfimo)
+
+## ¿Qué mejoraría si tuviera más tiempo?
+
+1. Crear paginación o scroll infinito de 10 en 10 productos, evitando así tener que recoger o fetchear todos los productos en una sola petición.
+
+2. Añadir los datos restantes a los productos, como su rating o una pequeña parte de su descripción.
+
+3. Añadir y mejorar los filtros, como ordenar por nombre, filtrar por rating, etc. A su vez, también encapsular la lógica de estado de los filtros en un reducer.
+
+4. Mejorar el diseño de la interfaz de usuario en general.
+
+5. Indexar las carpetas, para así no tener que importar componentes, funciones, etc. de las mismas carpetas de uno en uno, k. Solo habría que importarlas desde el archivo index.ts dentro de cada carpeta. (Debería haberlo hecho desde el principio, fallo mío)
+
+6. Hacer algún test simple
