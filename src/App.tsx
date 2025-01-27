@@ -1,28 +1,29 @@
+import Header from './components/Header/Header'
 import Products from './components/Products/Products'
-import Button from './components/ui/Button'
+import ErrorMessage from './components/ui/ErrorMessage'
+import { CartProvider } from './contexts/cart'
 import { ProductFiltersProvider } from './contexts/productFitlers'
 import { useProducts } from './hooks/useProducts'
 
 function App() {
   const { products, loading, error, fetchProducts } = useProducts()
 
-  if (error) {
-    return (
-      <main className='flex flex-col items-center gap-4 text-3xl'>
-        <p>¡Error al buscar los productos! Por favor, inténtelo de nuevo.</p>
-        <Button onClick={fetchProducts} className='bg-accent w-fit'>
-          Prueba otra vez
-        </Button>
-      </main>
-    )
-  }
+  return (
+    <CartProvider>
+      <Header />
 
-  return loading ? (
-    <h2 className='text-center text-3xl font-semibold'>Cargando...</h2>
-  ) : (
-    <ProductFiltersProvider products={products}>
-      <Products />
-    </ProductFiltersProvider>
+      {error ? (
+        <ErrorMessage onClickButton={fetchProducts}>
+          ¡Error al buscar los productos! Por favor, inténtelo de nuevo.
+        </ErrorMessage>
+      ) : loading ? (
+        <h2 className='text-center text-3xl font-semibold'>Cargando...</h2>
+      ) : (
+        <ProductFiltersProvider products={products}>
+          <Products />
+        </ProductFiltersProvider>
+      )}
+    </CartProvider>
   )
 }
 
