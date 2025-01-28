@@ -172,7 +172,7 @@ Por defecto solo se puede acceder desde la propia máquina (localhost), pero se 
 
 3. Hacer la lógica del estado del carrito (cart) en un reducer, ya que el carrito puede variar de muchas maneras (añadir producto a carrito, eliminar producto, sumar una unidad, etc.). AL usar un reducer puedo manejar todas estas acciones de manera más clara y mantenible, ya que cada acción está definida explícitamente y el estado se actualiza de forma predecible. (Nota: no he hecho lo mismo con el estado de los filtros, ya que no es tan complejo (de momento), pero debería haber usado también un reducer, ya que, al ser filtros, estos pueden escalar mucho, haciendo el estado de estos más tedioso).
 
-4. Utilizar TypeScript para asegurar la tipificación en todo el proyecto. Esto no solo mejora la experiencia de desarrollo al tener autocompletado, sino que también mejora la calidad del código, al evitar errores de tipo.
+4. Utilizar TypeScript para asegurar la tipificación en todo el proyecto. Esto no solo mejora la experiencia de desarrollo al tener autocompletado, sino que también mejora la calidad del código, al evitar errores de tipos.
 
 5. Implementar Tailwind CSS para el diseño de la interfaz de usuario. Tailwind permite escribir estilos de manera rápida y eficiente utilizando clases utilitarias, lo que facilita la creación de una interfaz consistente y responsiva sin necesidad de escribir CSS personalizado desde cero.
 
@@ -190,6 +190,6 @@ Por defecto solo se puede acceder desde la propia máquina (localhost), pero se 
 
 4. Mejorar el diseño de la interfaz de usuario en general.
 
-5. Indexar las carpetas, para así no tener que importar componentes, funciones, etc. de las mismas carpetas de uno en uno, k. Solo habría que importarlas desde el archivo index.ts dentro de cada carpeta. (Debería haberlo hecho desde el principio, fallo mío).
+5. Indexar las carpetas, para así no tener que importar componentes, funciones, etc. de las mismas carpetas de uno en uno. Solo habría que importarlas desde el archivo index.ts dentro de cada carpeta. (Debería haberlo hecho desde el principio, fallo mío).
 
 6. Hacer algún test simple, para comprobar que todo funciona como lo esperado.
